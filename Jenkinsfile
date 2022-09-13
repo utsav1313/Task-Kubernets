@@ -1,7 +1,7 @@
 pipeline{
   agent any
   environment {
-        imageName = "docker-image"
+        imagename = "docker-image"
         registryCredentials = "nexus"
         registry = "54.89.106.223:9001/"
         dockerImage = ''
@@ -16,7 +16,7 @@ pipeline{
       steps{
         script {
           
-          sh 'docker build -t imageName .'
+          sh 'docker build -t imagename .'
 
         }
       }
