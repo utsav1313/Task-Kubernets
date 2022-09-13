@@ -25,7 +25,7 @@ pipeline{
      steps{  
          script {
             
-             sh 'docker push 54.89.106.223:9001/imagename'
+            sh 'docker push 54.89.106.223:9001/imagename'
           }
         }
       }
