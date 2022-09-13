@@ -23,9 +23,9 @@ pipeline{
     }
     stage('Uploading to Nexus') {
      steps{  
-         script {
+        script {
             
-            sh 'docker push localhost:9001/imagename'
+          sh 'docker push localhost:9001/imagename'
           }
         }
       }
