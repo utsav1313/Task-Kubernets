@@ -16,7 +16,7 @@ pipeline{
       steps{
         script {
           
-          sh 'docker build -t imagename .'
+          sh 'docker build -t imagename:latest .'
 
         }
       }
