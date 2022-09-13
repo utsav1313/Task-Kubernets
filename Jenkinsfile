@@ -3,13 +3,13 @@ pipeline{
   environment {
         imageName = "docker-image"
         registryCredentials = "nexus"
-        registry = "http://44.202.141.94:8085/"
+        registry = "http://54.89.106.223:9001/"
         dockerImage = ''
     }
   stages{
     stage('checkout'){
       steps{
-         checkout([$class: 'GitSCM', branches: [[name: '**']], extensions: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/VishalTx/dockerflaskdemo.git']]])
+         checkout([$class: 'GitSCM', branches: [[name: '**']], extensions: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/utsav1313/Task-Kubernets.git']]])
       }
     }
      stage('Building image') {
@@ -22,7 +22,7 @@ pipeline{
     stage('Uploading to Nexus') {
      steps{  
          script {
-             docker.withRegistry( 'http://44.202.141.94:8085' ) {
+             docker.withRegistry( 'http://54.89.106.223:9001' ) {
              dockerImage.push('latest')
           }
         }
