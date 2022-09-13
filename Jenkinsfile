@@ -24,7 +24,7 @@ pipeline{
     stage('Uploading to Nexus') {
      steps{  
          script {
-             docker.withRegistry( 'http://54.89.106.223:9001' ) {
+             docker.withRegistry( 'http://'+registry, registryCredentials ) {
              dockerImage.push('latest')
           }
         }
