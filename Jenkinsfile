@@ -16,7 +16,7 @@ pipeline{
       steps{
         script {
           
-          sh 'docker build -t 54.89.106.223:9001/imagename:latest .'
+          sh 'docker build -t localhost:9001/imagename:latest .'
 
         }
       }
@@ -25,7 +25,7 @@ pipeline{
      steps{  
          script {
             
-            sh 'docker push 54.89.106.223:9001/imagename'
+            sh 'docker push localhost:9001/imagename'
           }
         }
       }
