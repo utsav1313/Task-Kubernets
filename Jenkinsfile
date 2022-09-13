@@ -3,7 +3,7 @@ pipeline{
   environment {
         imagename = "docker-image"
         registryCredentials = "nexus"
-        registry = "54.89.106.223:9001/"
+        registry = "54.89.106.223:9001"
         dockerImage = ''
     }
   stages{
@@ -24,8 +24,8 @@ pipeline{
     stage('Uploading to Nexus') {
      steps{  
          script {
-             docker.withRegistry( 'http://'+registry, registryCredentials ) {
-             imagename.push('latest')
+            
+             sh `docker push 54.89.106.223:9001/imagename`
           }
         }
       }

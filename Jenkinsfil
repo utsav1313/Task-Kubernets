@@ -27,3 +27,6 @@ openssl req \
 
 
   dockerImage = docker.build imageName
+
+   docker.withRegistry( 'http://'+registry, registryCredentials ) {
+             imagename.push('latest')
