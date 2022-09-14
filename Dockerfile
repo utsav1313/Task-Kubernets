@@ -13,6 +13,7 @@ ENV PATH=$CONDA_DIR/bin:$PATH
 # Install any necessary dependencies
 RUN pip3 install -r requirements.txt
 RUN conda install -c anaconda pandas
+RUN pip install flask==2.1.*
 # Open port 8080 for serving the webpage
 EXPOSE 9090
 
