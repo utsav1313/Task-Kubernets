@@ -15,13 +15,8 @@ pipeline{
      stage('Building image') {
       steps{
         script {
-<<<<<<< HEAD
           
           sh 'docker build -t 54.236.40.60:9091/imagename:latest .'
-=======
-            dockerImage = docker.build imageName
-            
->>>>>>> 43ace5a1d3588c5a17996d9fffbe58f33ed8e14b
 
         }
       }
