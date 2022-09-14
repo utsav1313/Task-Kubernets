@@ -3,7 +3,7 @@ pipeline{
   environment {
         imagename = "docker-image"
         registryCredentials = "nexus"
-        registry = "localhost:9095"
+        registry = "localhost:9091"
         dockerImage = ''
     }
   stages{
@@ -16,7 +16,7 @@ pipeline{
       steps{
         script {
           
-          sh 'docker build -t localhost:9050/imagename:latest .'
+          sh 'docker build -t localhost:9051/imagename:latest .'
 
         }
       }
