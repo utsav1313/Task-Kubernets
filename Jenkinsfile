@@ -25,7 +25,8 @@ pipeline{
      steps{  
         script {
             
-           sh 'docker push localhost:9091/imagename:latest'
+           docker.withRegistry( 'http://'+registry, registryCredentials ) {
+           dockerImage.push('latest')
           }
         }
       }
