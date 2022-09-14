@@ -1,7 +1,7 @@
 pipeline{
   agent any
   environment {
-        imageName = "docker-imgutsav"
+        imagename = "docker-imgutsav"
         registryCredentials = "nexus"
         registry = "54.236.40.60:9091/"
         dockerImage = ''
