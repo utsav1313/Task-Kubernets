@@ -15,8 +15,8 @@ pipeline{
      stage('Building image') {
       steps{
         script {
-          
-          sh 'docker build -t localhost:9091/imagename:latest .'
+            dockerImage = docker.build imageName
+            
 
         }
       }
