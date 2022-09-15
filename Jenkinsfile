@@ -1,7 +1,7 @@
 pipeline{
   agent any
   environment {
-        imageName = "docker-imgutsav"
+        imageName = "docker-image"
         registryCredentials = "nexus"
         registry = "54.236.40.60:9091/"
         dockerImage = ''
@@ -15,18 +15,15 @@ pipeline{
      stage('Building image') {
       steps{
         script {
-          
-          sh 'docker build -t 54.236.40.60:9091/imagename:latest .'
-
+          dockerImage = docker.build imageName
         }
       }
     }
     stage('Uploading to Nexus') {
      steps{  
-        script {
-            
-           docker.withRegistry( 'http://'+registry, registryCredentials ) {
-           dockerImage.push('latest')
+         script {
+             docker.withRegistry( 'http://'+registry, registryCredentials ) {
+             dockerImage.push('latest')
           }
         }
       }
