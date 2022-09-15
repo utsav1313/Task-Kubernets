@@ -5,10 +5,12 @@ import socket
 app = Flask(__name__)
 
 # app.config["Debug"] = True
-
 @app.route('/')
-def mydef():
-    return "hello page"
+@app.route('/home')
+def home():
+    return render_template('index.html')
+
+    
 if __name__ == '__main__':
     app.run()
 
