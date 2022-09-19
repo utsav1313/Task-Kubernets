@@ -23,3 +23,10 @@ openssl req \
   -x509 -days 365 -out certs/domain.crt
 
   /etc/docker/certs.d/18.232.187.8:8081/ca.crt
+
+  for pushing a image to docker hub we need to login with username and password
+  docker login
+  tag a running image with command 
+  docker tag my-image username/my-repo where my-image is image name of running image 
+  final push docker to dockerhub
+  docker push username/my-repo  where is my-repo is your repository name
