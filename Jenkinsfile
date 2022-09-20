@@ -3,7 +3,7 @@ pipeline{
   environment {
         imageName = "docker-image"
         registryCredentials = "nexus"
-        registry = "35.175.127.209:9091/"
+        registry = "3.236.134.111:9091/"
         dockerImage = ''
     }
   stages{
