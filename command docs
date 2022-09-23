@@ -30,3 +30,7 @@ openssl req \
   docker tag my-image username/my-repo where my-image is image name of running image 
   final push docker to dockerhub
   docker push username/my-repo  where is my-repo is your repository name
+
+  cmd to delete replicaset
+  kubectl delete $(kubectl get all | grep replicaset.apps | grep "0         0         0" | cut -d' ' -f 1)
+  kubectl delete rs bb-demo-8585dd6fcf
