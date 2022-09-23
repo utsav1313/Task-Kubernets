@@ -4,7 +4,7 @@ metadata:
   name: bb-demo
   namespace: default
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       bb: web
@@ -15,4 +15,4 @@ spec:
     spec:
       containers:
       - name: bb-site
-        image: us1313/utsav45
+        image: us1313/utsav1
