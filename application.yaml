@@ -7,7 +7,7 @@ spec:
   project: default
 
   source: 
-    repoURL: https://github.com/VishalTx/Task-Kubernets.git
+    repoURL: https://github.com/utsav1313/Task-Kubernets.git
     targetRevision: HEAD
     path: dev
   destination: 
