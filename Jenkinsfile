@@ -1,34 +1,33 @@
-pipeline {
-    agent any
- stages {
-  stage('Docker Build and Tag') {
-           steps {
-              
-                sh 'docker build -t imagename .' 
-                  sh 'docker tag imagename us1313/test1'
-                
-               
-          }
-        }
-     
-  stage('Push image to Docker Hub') {
-          
-            steps {
-        withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
-          sh  'docker push us1313/test1:latest'
-          
-        }
-                  
-          }
-        }
-     
-      stage('Run Docker container on Jenkins Agent') {
-             
-            steps {
-                sh "docker run -it  -p 9090:9090 us1313/test1"
- 
-            }
-        }
- 
+node {
+    def app
+
+    stage('Clone repository') {
+      
+
+        checkout scm
     }
-}
+
+    stage('Build image') {
+  
+       app = docker.build("manishaverma/deployk8")
+    }
+
+    stage('Test image') {
+  
+
+        app.inside {
+            sh 'echo "Tests passed"'
+        }
+    }
+
+    stage('Push image') {
+        
+        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+            app.push("${env.BUILD_NUMBER}")
+        }
+    }
+     stage('Trigger ManifestUpdate') {
+                echo "triggering updatemanifestjob"
+                build job: 'updatemanifest', parameters: [string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]
+        }
+ }
