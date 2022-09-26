@@ -1,30 +1,34 @@
-stages{
-    stage('checkout'){
-      steps{
-         checkout([$class: 'GitSCM', branches: [[name: '**']], extensions: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/utsav1313/Task-Kubernets.git']]])
-      }
-    }
-     stage('Building image') {
-      steps{
-        script {
-          dockerImage = docker.build imageName
-        }
-      }
-    }
-    stage('Uploading to Docker hub') {
-     steps{  
-         script {
-             sh 'docker tag imagename us1313/test1 '
-             sh 'docker push us1313/test1'
+pipeline {
+    agent any
+ stages {
+  stage('Docker Build and Tag') {
+           steps {
+              
+                sh 'docker build imagename .' 
+                  sh 'docker tag imagename us1313/test1'
+                
+               
           }
         }
-      }
-    }
-    stage('Pre Prod..') {
-     steps{  
-         script {
-             sh ' docker run -it -d -p 9090:9090 --name demo localhost:9091/docker-image'
+     
+  stage('Push image to Docker Hub') {
+          
+            steps {
+        withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
+          sh  'docker push us1313/test1:latest'
+          
         }
-      }
+                  
+          }
+        }
+     
+      stage('Run Docker container on Jenkins Agent') {
+             
+            steps {
+                sh "docker run -it  -p 9090:9090 us1313/test1"
+ 
+            }
+        }
+ 
     }
-  
+}
