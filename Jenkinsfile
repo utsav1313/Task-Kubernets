@@ -1,12 +1,4 @@
-pipeline{
-  agent any
-  environment {
-        imageName = "docker-image"
-        registryCredentials = "nexus"
-        registry = "3.236.134.111:9091/"
-        dockerImage = ''
-    }
-  stages{
+stages{
     stage('checkout'){
       steps{
          checkout([$class: 'GitSCM', branches: [[name: '**']], extensions: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/utsav1313/Task-Kubernets.git']]])
@@ -35,5 +27,4 @@ pipeline{
         }
       }
     }
-  }
-}
+  
