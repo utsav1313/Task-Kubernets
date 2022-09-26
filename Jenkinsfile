@@ -19,11 +19,11 @@ pipeline{
         }
       }
     }
-    stage('Uploading to Nexus') {
+    stage('Uploading to Docker hub') {
      steps{  
          script {
-             docker.withRegistry( 'http://'+registry, registryCredentials ) {
-             dockerImage.push('latest')
+             sh 'docker tag imagename us1313/test1 '
+             sh 'docker push us1313/test1'
           }
         }
       }
