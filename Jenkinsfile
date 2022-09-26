@@ -4,7 +4,7 @@ pipeline {
   stage('Docker Build and Tag') {
            steps {
               
-                sh 'docker build imagename .' 
+                sh 'docker build -t imagename .' 
                   sh 'docker tag imagename us1313/test1'
                 
                
