@@ -2,7 +2,8 @@ pipeline{
   agent any
   environment {
         imageName = "docker-image"
-        registryCredentials = "dockerhub"
+        registryCredentials = "nexus"
+        registry = "3.236.134.111:9091/"
         dockerImage = ''
     }
   stages{
