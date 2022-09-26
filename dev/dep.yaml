@@ -15,4 +15,4 @@ spec:
     spec:
       containers:
       - name: bb-site
-        image: us1313/utsav1
+        image: us1313/test1
