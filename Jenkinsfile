@@ -22,7 +22,7 @@ node {
 
     stage('Push image') {
         
-         sh 'docker Push us1313/test1'
+         sh 'docker push us1313/test1:latest'
     }
      stage('Trigger ManifestUpdate') {
                 echo "triggering updatemanifestjob"
