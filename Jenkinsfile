@@ -22,9 +22,7 @@ node {
 
     stage('Push image') {
         
-        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-            app.push("${env.BUILD_NUMBER}")
-        }
+         sh 'docker Push us1313/test1'
     }
      stage('Trigger ManifestUpdate') {
                 echo "triggering updatemanifestjob"
